@@ -1,8 +1,8 @@
 package dev.florinchristian.webportofoliomessaging.controller;
 
-import dev.florinchristian.webportofoliomessaging.model.Message;
-import dev.florinchristian.webportofoliomessaging.repository.MessageRepository;
-import dev.florinchristian.webportofoliomessaging.services.NotificationManager;
+import com.google.firebase.messaging.FirebaseMessagingException;
+import dev.florinchristian.webportofoliomessaging.model.UserMessage;
+import dev.florinchristian.webportofoliomessaging.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,24 +12,20 @@ import java.util.List;
 @RequestMapping(path = "/message")
 @CrossOrigin("*")
 public class MessagesController {
-
   @Autowired
-  private MessageRepository messageRepository;
+  private MessageService messageService;
 
   @PostMapping
-  public Message createMessage(@RequestBody Message message) {
-    if (message.getNickname().equals("") || message.getEmail().equals("") || message.getMessage().equals("")) {
-      return new Message();
+  public UserMessage createMessage(@RequestBody UserMessage userMessage) throws FirebaseMessagingException {
+    if (userMessage.getNickname().equals("") || userMessage.getEmail().equals("") || userMessage.getMessage().equals("")) {
+      return new UserMessage();
     }
 
-    Message result = messageRepository.save(message);
-    NotificationManager.SendNotification(result);
-
-    return result;
+    return messageService.save(userMessage);
   }
 
   @GetMapping
-  public List<Message> allMessages() {
-    return messageRepository.findAll();
+  public List<UserMessage> allMessages() {
+    return messageService.getAllMessages();
   }
 }
