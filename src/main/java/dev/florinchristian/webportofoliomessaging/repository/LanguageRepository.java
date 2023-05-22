@@ -4,4 +4,6 @@ import dev.florinchristian.webportofoliomessaging.model.api.Language;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LanguageRepository extends JpaRepository<Language, Long> {
+    boolean existsByLanguageName(String languageName);
+    Language findByLanguageName(String languageName);
 }

@@ -26,11 +26,12 @@ public class ProjectService {
 
   private void saveMissingLanguages(List<Language> languages) {
     languages.forEach(language -> {
-      Language targetLanguage = new Language(language.getLanguageName());
-      Example<Language> sample = Example.of(targetLanguage);
-
-      if (!languageRepository.exists(sample)) {
-        languageRepository.save(language);
+      if (languageRepository.existsByLanguageName(language.getLanguageName())) {
+        Language aux = languageRepository.findByLanguageName(language.getLanguageName());
+        language.setId(aux.getId());
+      } else {
+        Language newLanguage = languageRepository.save(language);
+        language.setId(newLanguage.getId());
       }
     });
   }
