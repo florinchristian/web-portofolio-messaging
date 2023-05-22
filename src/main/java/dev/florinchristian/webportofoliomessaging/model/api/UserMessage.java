@@ -1,12 +1,12 @@
-package dev.florinchristian.webportofoliomessaging.model;
+package dev.florinchristian.webportofoliomessaging.model.api;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "messages")
 public class UserMessage {
   @Id
@@ -19,4 +19,8 @@ public class UserMessage {
   private String email;
   @Column(name = "message", nullable = false)
   private String message;
+
+  public UserMessage(Long id) {
+    this.id = id;
+  }
 }

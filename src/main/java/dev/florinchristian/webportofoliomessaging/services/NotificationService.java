@@ -4,8 +4,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
-import dev.florinchristian.webportofoliomessaging.model.Subscriber;
-import dev.florinchristian.webportofoliomessaging.model.UserMessage;
+import dev.florinchristian.webportofoliomessaging.model.api.Subscriber;
+import dev.florinchristian.webportofoliomessaging.model.api.UserMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

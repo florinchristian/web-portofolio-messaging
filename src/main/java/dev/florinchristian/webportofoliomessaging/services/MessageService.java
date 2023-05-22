@@ -1,14 +1,19 @@
 package dev.florinchristian.webportofoliomessaging.services;
 
 import com.google.firebase.messaging.FirebaseMessagingException;
-import dev.florinchristian.webportofoliomessaging.model.Subscriber;
-import dev.florinchristian.webportofoliomessaging.model.UserMessage;
+import dev.florinchristian.webportofoliomessaging.model.api.Subscriber;
+import dev.florinchristian.webportofoliomessaging.model.api.UserMessage;
+import dev.florinchristian.webportofoliomessaging.model.response.ApiResponse;
+import dev.florinchristian.webportofoliomessaging.model.response.SuccessfulRequest;
 import dev.florinchristian.webportofoliomessaging.repository.MessageRepository;
 import dev.florinchristian.webportofoliomessaging.repository.SubscriberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
+import static dev.florinchristian.webportofoliomessaging.Constants.MESSAGE_OK_DELETED;
 
 @Service
 public class MessageService {
@@ -27,6 +32,12 @@ public class MessageService {
         notificationService.sendNotification(userMessage, subscribers);
 
         return savedMessage;
+    }
+
+    public ApiResponse delete(Long messageId) {
+        messageRepository.delete(new UserMessage(messageId));
+
+        return new SuccessfulRequest();
     }
 
     public List<UserMessage> getAllMessages() {

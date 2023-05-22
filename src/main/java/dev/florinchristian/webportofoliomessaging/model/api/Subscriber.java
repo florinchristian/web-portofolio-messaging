@@ -1,4 +1,4 @@
-package dev.florinchristian.webportofoliomessaging.model;
+package dev.florinchristian.webportofoliomessaging.model.api;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Subscriber {
-
   @Id
-  private String deviceUUID;
+  private String id;
   @Column(name = "device_token")
   private String deviceToken;
 }

@@ -1,6 +1,6 @@
 package dev.florinchristian.webportofoliomessaging.controller;
 
-import dev.florinchristian.webportofoliomessaging.model.Subscriber;
+import dev.florinchristian.webportofoliomessaging.model.api.Subscriber;
 import dev.florinchristian.webportofoliomessaging.repository.SubscriberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
