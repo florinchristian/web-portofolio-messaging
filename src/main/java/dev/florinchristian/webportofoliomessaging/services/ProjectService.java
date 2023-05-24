@@ -5,7 +5,6 @@ import dev.florinchristian.webportofoliomessaging.model.api.Project;
 import dev.florinchristian.webportofoliomessaging.repository.LanguageRepository;
 import dev.florinchristian.webportofoliomessaging.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

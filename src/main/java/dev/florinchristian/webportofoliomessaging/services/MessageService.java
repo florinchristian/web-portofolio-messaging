@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-
-import static dev.florinchristian.webportofoliomessaging.Constants.MESSAGE_OK_DELETED;
 
 @Service
 public class MessageService {

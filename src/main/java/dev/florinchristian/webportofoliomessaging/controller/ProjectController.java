@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/project")
 public class ProjectController {
   @Autowired
   private ProjectService projectService;
 
   @PostMapping
-  private Project saveProject(@RequestBody @NonNull Project project) {
+  public Project saveProject(@RequestBody @NonNull Project project) {
     return projectService.saveProject(project);
   }
 
